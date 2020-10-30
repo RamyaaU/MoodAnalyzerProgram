@@ -1,24 +1,57 @@
-﻿using System;
-
-namespace UnitTestMood
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MoodAnalyserProblem;
+namespace MoodAnalyserTest
 {
-    internal class MoodAnalyzer
+    [TestClass]
+    public class MoodAnalyzerTest
     {
-        private string message;
-
-        public MoodAnalyzer(string message)
+        /// <summary>
+        /// Givens the I am in sad mood should return sad.
+        /// </summary>
+        [TestMethod]
+        public void GivenIAmInSadMood_ShouldReturnSad()
         {
-            this.message = message;
+            //Arrange
+            string message = "I am in sad mood.";
+            string expectedValue = "SAD";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+            //Act
+            string result = moodAnalyser.AnalyseMood(message);
+            //Assert
+            Assert.AreEqual(expectedValue, result);
         }
-
-        internal string AnalyseMood(string message)
+        /// <summary>
+        /// Givens the I am in any mood should return happy.
+        /// </summary>
+        [TestMethod]
+        public void GivenIAmInAnyMood_ShouldReturnHappy()
         {
-            throw new NotImplementedException();
+            //Arrange
+            string message = "I am in happy mood.";
+            string expectedValue = "HAPPY";
+            MoodAnalyser moodAnalyzer = new MoodAnalyser(message);
+            //Act
+            string result = moodAnalyzer.AnalyseMood(message);
+            //Assert
+            Assert.AreEqual(expectedValue, result);
         }
-
-        internal string AnalyseMood()
+        /// <summary>
+        /// Given the null should return happy.
+        /// </summary>
+        /// <returns></returns>
+        [TestMethod]
+        [DataRow(null)]
+        public void GivenNull_ShouldReturnHappy(string message)
         {
-            throw new NotImplementedException();
+            ///Arrange
+            string ecpectedValue = "HAPPY";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+            ///Act
+            string result = moodAnalyser.AnalyseMood(message);
+
+            ///Assert
+            Assert.AreEqual(result, ecpectedValue);
+
         }
     }
 }

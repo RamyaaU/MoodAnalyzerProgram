@@ -2,52 +2,50 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MoodAnalyserProgram
+namespace MoodAnalyserProblem
 {
     public class MoodAnalyser
     {
-        public string mood;
-
+        string message;
         /// <summary>
         /// Initializes a new instance of the <see cref="MoodAnalyser"/> class.
-        /// Default Constructor
         /// </summary>
         public MoodAnalyser()
         {
+
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="MoodAnalyser"/> class.
         /// </summary>
-        /// <param name="mood">The mood.</param>
-        public MoodAnalyser(string mood)
+        /// <param name="message">The message.</param>
+        public MoodAnalyser(string message)
         {
-            this.mood = mood;
+            this.message = message;
         }
-
         /// <summary>
-        /// Analyses the mood.
+        /// Analyses user's mood.
         /// </summary>
-        /// <param name="mood">The mood.</param>
-        /// <returns></returns>
-        public string AnalyseMood()
+        /// <param name="message">The message.</param>
+        /// <returns>Sad else Happy</returns>
+        public string AnalyseMood(string message)
         {
             try
             {
-                if (mood.Contains("Sad"))
+                ///Checks if user mood is sad will return sad,
+                ///if user mood is happy will return happy.
+                if (message.Contains("sad"))
                 {
-                    return "Sad";
+                    return "SAD";
                 }
                 else
                 {
-                    return "Happy";
+                    return "HAPPY";
                 }
             }
-
-            catch (NullReferenceException)
+            catch
             {
-                return "Happy";
+                return "HAPPY";
             }
-
         }
     }
 }
